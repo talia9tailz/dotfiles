@@ -16,9 +16,6 @@ font:
   bold_italic:
     style: Bold
   size: 12
-  offset:
-    x: 0
-    y: 0
 
 colors:
   primary:
@@ -89,4 +86,3 @@ key_bindings:
   - { key: Y,      mods: Shift,         mode: Vi|~Search, action: ClearSelection          }
   - { key: Y,      mods: Shift,         mode: Vi|~Search, action: ToggleViMode            }
   - { key: Escape,                      mode: Vi|~Search, action: ToggleViMode            }
-  - { key: N,      mods: Control|Shift,                   action: SpawnNewInstance        }
