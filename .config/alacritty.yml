@@ -1,0 +1,92 @@
+window:
+  dynamic_padding: true
+  padding:
+    x: 2
+    y: 2
+  dynamic_title: true
+  opacity: 0.75
+
+font:
+  normal:
+    family: Liberation Mono
+  bold:
+    style: Bold
+  italic:
+    style: Regular
+  bold_italic:
+    style: Bold
+  size: 12
+  offset:
+    x: 0
+    y: 0
+
+colors:
+  primary:
+    background:   '#000000'
+    foreground:   '#ffffff'
+  cursor:
+    text:         '#000000'
+    cursor:       '#ffff80'
+  vi_mode_cursor:
+    text:         '#000000'
+    cursor:       '#ffff80'
+  line_indicator:
+    foreground:   '#000000'
+    background:   '#ffff80'
+  search:
+    matches:
+      background: '#ffffff'
+      foreground: '#000000'
+    focused_match:
+      background: '#ffff80'
+      foreground: '#000000'
+    bar:
+      background: '#ffffff'
+      foreground: '#000000'
+  normal:
+    black:        '#000000'
+    red:          '#ff0080'
+    green:        '#80ff00'
+    yellow:       '#ff8000'
+    blue:         '#0080ff'
+    magenta:      '#8000ff'
+    cyan:         '#00ff80'
+    white:        '#ffffff'
+  bright:
+    black:        '#8080ff'
+    red:          '#ff0080'
+    green:        '#80ff00'
+    yellow:       '#ff8000'
+    blue:         '#0080ff'
+    magenta:      '#8000ff'
+    cyan:         '#00ff80'
+    white:        '#ffff80'
+  dim:
+    black:        '#000000'
+    red:          '#ff0080'
+    green:        '#80ff00'
+    yellow:       '#ff8000'
+    blue:         '#0080ff'
+    magenta:      '#8000ff'
+    cyan:         '#00ff80'
+    white:        '#ffff80'
+
+cursor:
+  style:
+    blinking: Always
+  blink_interval: 500
+  thickness: 0.1
+
+mouse:
+  hide_when_typing: true
+
+key_bindings:
+  - { key: Home,                        mode: Vi|~Search, action: First                   }
+  - { key: End,                         mode: Vi|~Search, action: Last                    }
+  - { key: Left,  mods: Control,        mode: Vi|~Search, action: WordLeft                }
+  - { key: Right, mods: Control,        mode: Vi|~Search, action: WordRight               }
+  - { key: Y,      mods: Shift,         mode: Vi|~Search, action: Copy                    }
+  - { key: Y,      mods: Shift,         mode: Vi|~Search, action: ClearSelection          }
+  - { key: Y,      mods: Shift,         mode: Vi|~Search, action: ToggleViMode            }
+  - { key: Escape,                      mode: Vi|~Search, action: ToggleViMode            }
+  - { key: N,      mods: Control|Shift,                   action: SpawnNewInstance        }
