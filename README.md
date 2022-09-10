@@ -3,7 +3,7 @@ AKA how to cop the look and feel of my terminal.
 
 Alacritty + ZSH + Powerlevel10k
 
-#### On desktop with git status and background jobs:
+#### Locally, with git status and background jobs:
 
 ![2022-09-10-015423_3440x1440_scrot](https://user-images.githubusercontent.com/26313286/189471984-10571701-4d72-4104-b10d-a2546753a9d9.png)
 
