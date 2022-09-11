@@ -1,12 +1,12 @@
 # dotfiles
-AKA how to cop the look and feel of my terminal.
+*AKA how to cop the look and feel of my terminal*
 
-Alacritty + ZSH + Powerlevel10k
+Alacritty + ZSH + Syntax Highlighting + Powerlevel10k
 
-#### Locally, with git status and background jobs:
+#### Local, with multiple active segments:
 
-![2022-09-10-015423_3440x1440_scrot](https://user-images.githubusercontent.com/26313286/189471984-10571701-4d72-4104-b10d-a2546753a9d9.png)
+![2022-09-11-151634_3440x1440_scrot](https://user-images.githubusercontent.com/26313286/189545337-a1b5cb01-ae55-4a48-82b1-fab4433ee6f6.png)
 
-#### Via SSH:
+#### Remote, with context segment:
 
-![Screenshot_20220910-021905](https://user-images.githubusercontent.com/26313286/189473658-4885575f-e7b8-47d4-84d0-b2d5e0761e70.png)
+![Screenshot_20220910-021905](https://user-images.githubusercontent.com/26313286/189545306-b12e722b-3e13-4b4f-9f89-85fa76c6cb85.png)
