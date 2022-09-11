@@ -3,8 +3,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Environment dependent
+if [[ ! $SSH_CLIENT ]]; then
+  PROMPT='[%F{4}%B%~%b%f]%F{15}%#%f '
+  RPROMPT='[%F{3}%?%f]'
+else
+  PROMPT='[%F{6}%B%n%b%f@%F{6}%B%m%b%f][%F{4}%B%1~%b%f]%F{15}%#%f '
+  alias neofetch='neofetch --ascii_distro artix_small'
+fi
+
 # Basic settings
-PROMPT='[%F{6}%B%n%b%f@%F{6}%B%M%b%f][%F{4}%B%1~%b%f]%F{15}%#%f '
 ZLE_RPROMPT_INDENT=0
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -27,10 +35,9 @@ bindkey -s  "r"       "source ~/.zshrc \n"    # alt + r
 
 # Include
 source ~/.aliases
-#source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/Repositories/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.p10k.zsh
 
-# Splash Screen
-if [[ $SSH_CLIENT ]];then neofetch --ascii_distro artix_small
+# Splash screen
+neofetch
