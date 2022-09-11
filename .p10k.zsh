@@ -348,7 +348,7 @@
   typeset -g POWERLEVEL9K_STATUS_EXTENDED_STATES=true
 
   # Status on success.
-  typeset -g POWERLEVEL9K_STATUS_OK=true
+  typeset -g POWERLEVEL9K_STATUS_OK=false
   typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=2
   typeset -g POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_EXPANSION='0'
 
@@ -376,7 +376,7 @@
 #  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='err'
 
   #######################[ background_jobs: presence of background jobs ]#######################
-  # Don't show the number of background jobs.
+  # Show the number of background jobs.
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
   # Background jobs color.
   typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=3
