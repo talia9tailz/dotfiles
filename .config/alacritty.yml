@@ -50,14 +50,14 @@ colors:
     cyan:         '#00ff80'
     white:        '#ffffff'
   bright:
-    black:        '#8080ff'
+    black:        '#ffff80'
     red:          '#ff0080'
     green:        '#80ff00'
     yellow:       '#ff8000'
     blue:         '#0080ff'
     magenta:      '#8000ff'
     cyan:         '#00ff80'
-    white:        '#ffff80'
+    white:        '#ffffff'
   dim:
     black:        '#000000'
     red:          '#ff0080'
@@ -66,7 +66,7 @@ colors:
     blue:         '#0080ff'
     magenta:      '#8000ff'
     cyan:         '#00ff80'
-    white:        '#ffff80'
+    white:        '#ffffff'
 
 cursor:
   style:
