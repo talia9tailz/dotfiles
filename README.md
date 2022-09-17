@@ -5,8 +5,9 @@ Alacritty + ZSH + Syntax Highlighting + Powerlevel10k
 
 #### Local, with multiple active segments:
 
-![2022-09-11-151634_3440x1440_scrot](https://user-images.githubusercontent.com/26313286/189545337-a1b5cb01-ae55-4a48-82b1-fab4433ee6f6.png)
+![2022-09-11-151634_3440x1440_scrot](https://user-images.githubusercontent.com/26313286/190872383-9c8b2ddc-0a22-4671-a55f-b743dbf06cd6.png)
+
 
 #### Remote, with context segment:
 
-![Screenshot_20220910-021905](https://user-images.githubusercontent.com/26313286/189545306-b12e722b-3e13-4b4f-9f89-85fa76c6cb85.png)
+![Screenshot_20220910-021905](https://user-images.githubusercontent.com/26313286/190872400-8e62613f-8425-47fe-b204-cfa33127acbe.png)
