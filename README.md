@@ -1,5 +1,5 @@
 # dotfiles
-*AKA how to cop the look and feel of my terminal*
+*AKA how to klep the look and feel of my terminal*
 
 Alacritty + ZSH + Syntax Highlighting + Powerlevel10k
 
