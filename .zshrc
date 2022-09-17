@@ -30,8 +30,8 @@ bindkey --  "^[[1;5D"   backward-word           # ctrl + left
 bindkey --  "[Z"      reverse-menu-complete   # shift + tab
 bindkey -s  "[1;3A"   "cd .. \n"              # alt + up
 bindkey -s  "[1;3H"   "cd ~ \n"               # alt + home
-bindkey -s  ""        "exit \n"               # ctrl + x
 bindkey -s  "r"       "source ~/.zshrc \n"    # alt + r
+bindkey -s  "c"       "clear; neofetch \n"    # alt + c
 
 # Include
 source ~/.aliases
