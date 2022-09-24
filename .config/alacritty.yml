@@ -28,19 +28,19 @@ colors:
     cursor:       '#ffff80'
   vi_mode_cursor:
     text:         '#000000'
-    cursor:       '#ffff80'
+    cursor:       '#ff80ff'
   line_indicator:
     foreground:   '#000000'
-    background:   '#ffff80'
+    background:   '#ff80ff'
   search:
     matches:
-      background: '#ffffff'
+      background: '#80ffff'
       foreground: '#000000'
     focused_match:
-      background: '#ffff80'
+      background: '#ff80ff'
       foreground: '#000000'
     bar:
-      background: '#ffffff'
+      background: '#80ffff'
       foreground: '#000000'
   normal:
     black:        '#000000'
@@ -52,7 +52,7 @@ colors:
     cyan:         '#00ff80'
     white:        '#ffffff'
   bright:
-    black:        '#ffff80'
+    black:        '#808080'
     red:          '#ff0080'
     green:        '#80ff00'
     yellow:       '#ff8000'
