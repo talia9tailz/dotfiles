@@ -20,6 +20,7 @@ font:
 draw_bold_text_with_bright_colors: true
 
 colors:
+  transparent_background_colors: true
   primary:
     background:   '#000000'
     foreground:   '#ffffff'
@@ -53,22 +54,22 @@ colors:
     white:        '#ffffff'
   bright:
     black:        '#808080'
-    red:          '#ff0080'
-    green:        '#80ff00'
-    yellow:       '#ff8000'
-    blue:         '#0080ff'
-    magenta:      '#8000ff'
-    cyan:         '#00ff80'
+    red:          '#ff4080'
+    green:        '#80ff40'
+    yellow:       '#ff8040'
+    blue:         '#4080ff'
+    magenta:      '#8040ff'
+    cyan:         '#40ff80'
     white:        '#ffffff'
   dim:
     black:        '#000000'
-    red:          '#ff0080'
-    green:        '#80ff00'
-    yellow:       '#ff8000'
-    blue:         '#0080ff'
-    magenta:      '#8000ff'
-    cyan:         '#00ff80'
-    white:        '#ffffff'
+    red:          '#800040'
+    green:        '#408000'
+    yellow:       '#804000'
+    blue:         '#004080'
+    magenta:      '#400080'
+    cyan:         '#008040'
+    white:        '#808080'
 
 cursor:
   style:
