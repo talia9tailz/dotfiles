@@ -16,6 +16,8 @@
 
   # The list of segments shown on the left
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+    status                  # exit code of the last command
+    background_jobs         # presence of background jobs
     context                 # user@hostname
     dir                     # current directory
     vcs                     # git status
@@ -24,20 +26,18 @@
   )
 
   # The list of segments shown on the right.
-  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
-    status                  # exit code of the last command
-    background_jobs         # presence of background jobs
-    newline                 # \n
-  )
+  typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
   typeset -g POWERLEVEL9K_MODE=ascii
-  # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
-  # icon overlap when using non-monospace fonts. When set to `none`, spaces are not added.
-  typeset -g POWERLEVEL9K_ICON_PADDING=none
-  
+
   # Add an empty line before each prompt.
   typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+  # Connect left prompt lines with these symbols.
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='┌'
+  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='│'
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='└'
 
   # Basic style options that define the overall look of your prompt.
   typeset -g POWERLEVEL9K_BACKGROUND=
@@ -46,22 +46,8 @@
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='%F{7}]%f'
   typeset -g POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='%F{7}[%f'
 
-
-  # When set to true, icons appear before content on both sides of the prompt. When set
-  # to false, icons go after content. If empty or not set, icons go before content in the left
-  # prompt and after content in the right prompt.
-  #
-  # You can also override it for a specific segment:
-  #
-  #   POWERLEVEL9K_STATUS_ICON_BEFORE_CONTENT=false
-  #
-  # Or for a specific segment in specific state:
-  #
-  #   POWERLEVEL9K_DIR_NOT_WRITABLE_ICON_BEFORE_CONTENT=false
-  typeset -g POWERLEVEL9K_ICON_BEFORE_CONTENT=true
-
   # Add an empty line before each prompt.
-  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=false
+  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
   # The left end of left prompt.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL='%F{7}[%f'
@@ -69,7 +55,7 @@
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_LAST_SEGMENT_END_SYMBOL='%F{7}]%f'
 
   # Filler between left and right prompt on the first prompt line.
-  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR='─'
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR=' '
   if [[ $POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_CHAR != ' ' ]]; then
     # The color of the filler.
     typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_FOREGROUND=8
@@ -101,6 +87,65 @@
   typeset -g POWERLEVEL9K_PROMPT_CHAR_LEFT_PROMPT_FIRST_SEGMENT_START_SYMBOL=''
   # Use compatible char at console
   if [[ $TERM == "linux" ]];then typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='>';fi
+
+   typeset -g POWERLEVEL9K_LOCK_ICON=''
+
+   typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND=8
+   typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_SHORTENED_FOREGROUND=8
+   typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_ANCHOR_FOREGROUND=8
+
+  ##########################[ status: exit code of the last command ]###########################
+  # Enable OK_PIPE, ERROR_PIPE and ERROR_SIGNAL status states to allow us to enable, disable and
+  # style them independently from the regular OK and ERROR state.
+  typeset -g POWERLEVEL9K_STATUS_EXTENDED_STATES=true
+
+  # Status on success
+  typeset -g POWERLEVEL9K_STATUS_OK=false
+  typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=2
+
+  # Status when some part of a pipe command fails but the overall exit status is zero
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
+  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=3
+
+  # Status when it's just an error code (e.g., '1')
+  typeset -g POWERLEVEL9K_STATUS_ERROR=true
+  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=1
+
+  # Status when the last command was terminated by a signal.
+  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
+  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=1
+  typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=true
+
+  # Status when some part of a pipe command fails and the overall exit status is also non-zero
+  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
+  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=1
+
+  #######################[ background_jobs: presence of background jobs ]#######################
+  # Don't show the number of background jobs.
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
+  # Background jobs color.
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=3
+  # Custom icon.
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='&'
+
+  ##################################[ context: user@hostname ]##################################
+  # Context color when running with privileges.
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_FOREGROUND=1
+  # Context color in SSH without privileges.
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_FOREGROUND=7
+  # Default context color (no privileges, no SSH).
+  typeset -g POWERLEVEL9K_CONTEXT_FOREGROUND=7
+
+  # Context format when running with privileges: bold user@hostname.
+  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE='%B%F{1}%n%f%b@%B%F{6}%m%f%b'
+  # Context format when in SSH without privileges: user@hostname.
+  typeset -g POWERLEVEL9K_CONTEXT_{REMOTE,REMOTE_SUDO}_TEMPLATE='%B%F{2}%n%f%b@%B%F{6}%m%f%b'
+  # Default context format (no privileges, no SSH): user@hostname.
+  typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE='%B%F{2}%n%f%b@%B%F{6}%m%f%b'
+
+  # Don't show context unless running with privileges or in SSH.
+  # Tip: Remove the next line to always show context.
+  typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_{CONTENT,VISUAL_IDENTIFIER}_EXPANSION=''
 
   ##################################[ dir: current directory ]##################################
   # Default current directory color.
@@ -182,10 +227,13 @@
   # and POWERLEVEL9K_DIR_CLASSES below.
   typeset -g POWERLEVEL9K_DIR_SHOW_WRITABLE=v3
 
-  # If a styling parameter isn't explicitly defined for some class, it falls back to the classless
-  # parameter. For example, if POWERLEVEL9K_DIR_WORK_NOT_WRITABLE_FOREGROUND is not set, it falls
-  # back to POWERLEVEL9K_DIR_FOREGROUND.
-  #
+#  typeset -g POWERLEVEL9K_LOCK_ICON=''
+
+  # format for read only dirs
+  typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_FOREGROUND=8
+  typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_SHORTENED_FOREGROUND=8
+  typeset -g POWERLEVEL9K_DIR_NOT_WRITABLE_ANCHOR_FOREGROUND=8
+
   typeset -g POWERLEVEL9K_DIR_CLASSES=()
 
   #####################################[ vcs: git status ]######################################
@@ -216,18 +264,18 @@
 
     if (( $1 )); then
       # Styling for up-to-date Git status.
-      local       meta='%f'   # default foreground
-      local      clean='%2F'  # green foreground
-      local   modified='%3F'  # yellow foreground
-      local  untracked='%5F'  # blue foreground
-      local conflicted='%1F'  # red foreground
+      local       meta='%f'
+      local      clean='%5F'
+      local   modified='%3F'
+      local  untracked='%1F'
+      local conflicted='%1F'
     else
       # Styling for incomplete and stale Git status.
-      local       meta='%f'  # default foreground
-      local      clean='%f'  # default foreground
-      local   modified='%f'  # default foreground
-      local  untracked='%f'  # default foreground
-      local conflicted='%f'  # default foreground
+      local       meta='%f'
+      local      clean='%f'
+      local   modified='%f'
+      local  untracked='%f'
+      local conflicted='%f'
     fi
 
     local res
@@ -345,48 +393,7 @@
   typeset -g POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=2
   typeset -g POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=3
 
-  ##########################[ status: exit code of the last command ]###########################
-  # Enable OK_PIPE, ERROR_PIPE and ERROR_SIGNAL status states to allow us to enable, disable and
-  # style them independently from the regular OK and ERROR state.
-  typeset -g POWERLEVEL9K_STATUS_EXTENDED_STATES=true
-
-  # Status on success.
-  typeset -g POWERLEVEL9K_STATUS_OK=false
-  typeset -g POWERLEVEL9K_STATUS_OK_FOREGROUND=2
-  typeset -g POWERLEVEL9K_STATUS_OK_VISUAL_IDENTIFIER_EXPANSION='0'
-
-  # Status when some part of a pipe command fails but the overall exit status is zero. It may look
-  # like this: 1|0.
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_FOREGROUND=1
-  typeset -g POWERLEVEL9K_STATUS_OK_PIPE_VISUAL_IDENTIFIER_EXPANSION=
-
-  # Status when it's just an error code (e.g., '1').
-  typeset -g POWERLEVEL9K_STATUS_ERROR=true
-  typeset -g POWERLEVEL9K_STATUS_ERROR_FOREGROUND=1
-
-  # Status when the last command was terminated by a signal.
-  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
-  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_FOREGROUND=1
-  # Use terse signal names: "INT" instead of "SIGINT(2)".
-  typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=true
-  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL_VISUAL_IDENTIFIER_EXPANSION=
-
-  # Status when some part of a pipe command fails and the overall exit status is also non-zero.
-  # It may look like this: 1|0.
-  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
-  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_FOREGROUND=1
-#  typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE_VISUAL_IDENTIFIER_EXPANSION='err'
-
-  #######################[ background_jobs: presence of background jobs ]#######################
-  # Show the number of background jobs.
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
-  # Background jobs color.
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=3
-  # Custom icon.
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='&'
-
-  
+  # 
   typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=always
   typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
   typeset -g POWERLEVEL9K_DISABLE_HOT_RELOAD=true
