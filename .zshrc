@@ -4,16 +4,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Environment dependent
-if [[ ! $SSH_CLIENT ]]; then
-  PROMPT='[%F{4}%B%~%b%f]%F{15}%#%f '
-  RPROMPT='[%F{3}%?%f]'
-else
-  PROMPT='[%F{6}%B%n%b%f@%F{6}%B%m%b%f][%F{4}%B%1~%b%f]%F{15}%#%f '
+if [[ $SSH_CLIENT ]]; then
   alias neofetch='neofetch --ascii_distro artix_small'
 fi
 
 # Basic settings
-ZLE_RPROMPT_INDENT=0
+PROMPT='%B%F{4}%~%F{%?}>%f '
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -36,8 +32,7 @@ bindkey -s  "c"       "clear; neofetch \n"    # alt + c
 # Include
 source ~/.aliases
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/Repositories/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.p10k.zsh
+source ~/Repositories/powerlevel10k/powerlevel10k.zsh-theme && source ~/.p10k.zsh
 
 # Splash screen
 neofetch
