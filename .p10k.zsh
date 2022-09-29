@@ -35,6 +35,9 @@
   # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
   # icon overlap when using non-monospace fonts. When set to `none`, spaces are not added.
   typeset -g POWERLEVEL9K_ICON_PADDING=none
+  
+  # Add an empty line before each prompt.
+  typeset -g POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 
   # Basic style options that define the overall look of your prompt.
   typeset -g POWERLEVEL9K_BACKGROUND=
