@@ -6,12 +6,12 @@ Alacritty + ZSH + Syntax Highlighting + Powerlevel10k
 #### Features:
 - high-contrast color scheme
 - bracket-enclosed segment style
+- read only directories are grayed out in powerline
 - prompt char uses exit code of previous command as color
 
 ## Screenshots
+#### Every segment all at once:
+![2022-09-29-144102_842x690_scrot](https://user-images.githubusercontent.com/26313286/193116177-e1b93aeb-adcc-43f2-8bf5-3537c552ec08.png)
+From left to right: exit status, background jobs, context, working directory, git branch & status
 
-#### Local, with multiple active segments:
-![2022-09-28-201208_1129x682_scrot](https://user-images.githubusercontent.com/26313286/192910273-4ff1f241-454b-44bb-bfa5-1d74143592b7.png)
-
-#### Remote, with context segment:
-![Screenshot_20220928-194121](https://user-images.githubusercontent.com/26313286/192908833-43eab44e-fe91-49d9-9bf3-9d21a5afc8bf.png)
+Segments only show when relevant. Working directory is the only permanent segment.
