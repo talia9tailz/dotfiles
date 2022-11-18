@@ -40,7 +40,7 @@ colors:
     focused_match:
       background: '#ff80ff'
       foreground: '#000000'
-    bar:
+    footer_bar:
       background: '#80ffff'
       foreground: '#000000'
   normal:
